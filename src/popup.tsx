@@ -8,7 +8,7 @@ import './index.css'
 
 // Initialize stores
 useSettingsStore.getState().loadSettings()
-useUsageDataStore.getState().loadData()
+useUsageDataStore.getState().loadUsageData()
 
 function PopupApp() {
   const theme = useSettingsStore(state => state.settings.theme)

@@ -5,7 +5,6 @@ import { TrendingUp } from "lucide-react"
 import { formatCurrency, formatTokenCount } from "@/lib/formatters"
 
 export function TotalUsageWidget() {
-  const blockReport = useUsageDataStore(state => state.blockReport)
   const dailyReport = useUsageDataStore(state => state.dailyReport)
   const isLoading = useUsageDataStore(state => state.isLoading)
 

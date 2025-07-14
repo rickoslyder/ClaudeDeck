@@ -8,7 +8,7 @@ import { MonthlyReport } from './views/MonthlyReport';
 import { SessionReport } from './views/SessionReport';
 import { BlocksReport } from './views/BlocksReport';
 import { Settings } from './views/Settings';
-import { DebugConsole } from './components/DebugConsole';
+// import { DebugConsole } from './components/DebugConsole';
 
 type View = 'dashboard' | 'daily' | 'monthly' | 'session' | 'blocks' | 'settings';
 

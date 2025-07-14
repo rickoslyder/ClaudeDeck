@@ -160,10 +160,6 @@ export function TopModelsWidget() {
                   const percent = entry?.payload ? ((entry.payload.value / totalTokens) * 100).toFixed(0) : '0'
                   return `${value} (${percent}%)`
                 }}
-                itemStyle={{
-                  color: 'hsl(var(--foreground))',
-                  fontSize: '14px'
-                }}
               />
             </PieChart>
           </ResponsiveContainer>

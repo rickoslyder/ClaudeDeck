@@ -239,8 +239,10 @@ export function useSystemTray() {
           const tooltipParts = [];
           if (currentBlock) {
             tooltipParts.push(`Current Block: ${formatTokens(currentBlock.totalTokens, 'k')} tokens (${formatCost(currentBlock.totalCost, 2)})`);
-            if (components.models) tooltipParts.push(`Models: ${components.models}`);
-            if (components.timeRemaining) tooltipParts.push(`Time Remaining: ${components.timeRemaining}`);
+            const models = formatModelsDisplay(currentBlock.models);
+            if (models) tooltipParts.push(`Models: ${models}`);
+            const timeRemaining = getTimeRemaining(currentBlock.startTime);
+            if (timeRemaining) tooltipParts.push(`Time Remaining: ${timeRemaining}`);
           }
           if (dailyTotal) tooltipParts.push(`Today: ${formatTokens(dailyTotal.tokens, 'k')} tokens (${formatCost(dailyTotal.cost, 2)})`);
           if (sessionTotal) tooltipParts.push(`Session: ${formatTokens(sessionTotal.tokens, 'k')} tokens (${formatCost(sessionTotal.cost, 2)})`);
@@ -248,6 +250,31 @@ export function useSystemTray() {
           
           tooltip = tooltipParts.join('\n') || 'ClaudeDeck - No active usage';
         } else if (systemTraySettings.visual.tooltipContent === 'custom' && systemTraySettings.visual.customTooltipFormat) {
+          // Build components for custom format
+          const components: Record<string, string> = {};
+          
+          if (currentBlock) {
+            components.tokens = formatTokens(currentBlock.totalTokens, systemTraySettings.display.numberFormat.tokensUnit);
+            components.cost = formatCost(currentBlock.totalCost, systemTraySettings.display.numberFormat.costDecimals);
+            components.models = formatModelsDisplay(currentBlock.models) || '';
+            components.timeRemaining = getTimeRemaining(currentBlock.startTime);
+          }
+          
+          if (dailyTotal) {
+            components.dailyTokens = formatTokens(dailyTotal.tokens, systemTraySettings.display.numberFormat.tokensUnit);
+            components.dailyCost = formatCost(dailyTotal.cost, systemTraySettings.display.numberFormat.costDecimals);
+          }
+          
+          if (sessionTotal) {
+            components.sessionTokens = formatTokens(sessionTotal.tokens, systemTraySettings.display.numberFormat.tokensUnit);
+            components.sessionCost = formatCost(sessionTotal.cost, systemTraySettings.display.numberFormat.costDecimals);
+          }
+          
+          if (monthlyTotal) {
+            components.monthlyTokens = formatTokens(monthlyTotal.tokens, systemTraySettings.display.numberFormat.tokensUnit);
+            components.monthlyCost = formatCost(monthlyTotal.cost, systemTraySettings.display.numberFormat.costDecimals);
+          }
+          
           // Use custom format
           let formatted = systemTraySettings.visual.customTooltipFormat;
           Object.entries(components).forEach(([key, value]) => {

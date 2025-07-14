@@ -18,12 +18,12 @@ cask "claudedeck" do
 
   app "ClaudeDeck.app"
 
-  uninstall quit: "com.claudedeck.app"
+  uninstall quit: "com.claudedeck.claudedeck"
 
   zap trash: [
-    "~/Library/Application Support/com.claudedeck.app",
-    "~/Library/Caches/com.claudedeck.app",
-    "~/Library/Preferences/com.claudedeck.app.plist",
-    "~/Library/Saved Application State/com.claudedeck.app.savedState",
+    "~/Library/Application Support/com.claudedeck.claudedeck",
+    "~/Library/Caches/com.claudedeck.claudedeck",
+    "~/Library/Preferences/com.claudedeck.claudedeck.plist",
+    "~/Library/Saved Application State/com.claudedeck.claudedeck.savedState",
   ]
 end
