@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* Custom theme configuration for v4 */
+@theme {
+  --font-size-xl: 1.25rem;
+  --line-height-xl: 1.75rem;
+  --font-size-2xl: 1.5rem;
+  --line-height-2xl: 2rem;
+  --font-size-3xl: 1.875rem;
+  --line-height-3xl: 2.25rem;
+}

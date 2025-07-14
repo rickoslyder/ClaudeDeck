@@ -1,0 +1,52 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "claudedeck",
+  "title": "ClaudeDeck",
+  "description": "Track your Claude API usage and costs",
+  "icon": "icon.png",
+  "author": "rickoslyder",
+  "categories": ["Developer Tools", "Productivity"],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "usage-stats",
+      "title": "Show Usage Stats",
+      "subtitle": "ClaudeDeck",
+      "description": "Display current Claude API usage statistics",
+      "mode": "view"
+    },
+    {
+      "name": "open-app",
+      "title": "Open ClaudeDeck",
+      "subtitle": "ClaudeDeck",
+      "description": "Open the ClaudeDeck desktop application",
+      "mode": "no-view"
+    },
+    {
+      "name": "daily-cost",
+      "title": "Show Daily Cost",
+      "subtitle": "ClaudeDeck",
+      "description": "Display today's Claude API costs",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.64.0",
+    "@raycast/utils": "^1.10.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.6",
+    "@types/node": "20.8.10",
+    "@types/react": "18.2.27",
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
